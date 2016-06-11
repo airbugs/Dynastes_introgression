@@ -3,13 +3,13 @@
 #Additionally, remove loci that have less than 4 taxa & those that are not variable
 #need a library names pegas (the function theta.s)
 #library(pegas);
-chopped.loci <- scan('GAntilles130.loci', what = 'character', sep = '\n');#change file name
+chopped.loci <- scan('filename.loci', what = 'character', sep = '\n');#change file name
 break.lines <- grep('//', chopped.loci);
 index.lines <- c(0, break.lines);
 
-loci.seq.length <- 130;#how long are the aligned sequences
+loci.seq.length <- 110;#how long are the aligned sequences (in the Dynastes example it is set to 110 basepairs
 #max.theta.intra <- 0.02;#dont need this here
-max.div.inter <- 0.04248862;#change number here
+max.div.inter <- 0.15;#change number here, maximum p distance between species
 null.data <- rep(0, length(break.lines)*2);#for creating a data matrix
 stat.mat <- matrix(null.data, nrow = length(break.lines), ncol = 2);#data matrix for sum stats
 colnames(stat.mat) <- c('N_taxa', 'max_p_dis');
@@ -25,6 +25,7 @@ for(i in 1:length(break.lines)){
 	uni.sp.vec <- unique(sp.vec);
 	stat.mat[i,1] <- length(uni.sp.vec);	
 
+# if you want to filter loci by the theta value (e.g. population genetic studies) you may want to use the following:
 #	theta.vec <- NULL;#calculate theta first
 #	for(iter in 1:length(uni.sp.vec)){
 #		temp.sp <- uni.sp.vec[iter];
