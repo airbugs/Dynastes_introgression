@@ -1,7 +1,7 @@
 #from unlinked SNPs to bpp inputs
-data.loci <- scan('DyEDpd15AllSP.loci', what = 'character', sep = '\n');
+data.loci <- scan('filename.loci', what = 'character', sep = '\n');
 #this .loci file should be already edited with a max theta within taxon & a max pd between taxa
-n.ind <- 61;#change this number to the sample size of yours
+n.ind <- ##;#change this number to the sample size of yours
 
 break.lines <- grep('//', data.loci);
 index.lines <- c(0, break.lines);
@@ -47,4 +47,4 @@ for(iter in 1:length(break.lines)){
 	}	
 }
 
-write.table(data.matrix, file='DyEDunlinksnppd15AllSP.txt', quote = FALSE, sep = '', col.names = FALSE);#you may want to specify the file name
+write.table(data.matrix, file='outputfilename.txt', quote = FALSE, sep = '', col.names = FALSE);#you may want to specify the file name
