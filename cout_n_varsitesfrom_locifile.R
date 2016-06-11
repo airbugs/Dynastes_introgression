@@ -1,4 +1,6 @@
-data.loci <- scan('GAntillesALLtaxaALLvar.loci', what = 'character', sep = '\n');#change name of the .loci file
+#to plot number of var sites per locus and per site.
+
+data.loci <- scan('input_filename.loci', what = 'character', sep = '\n');#change name of the .loci file
 
 break.lines <- grep('//', data.loci);
 
@@ -24,8 +26,8 @@ for(i in 1:length(break.lines)){
 	temp <- unlist(strsplit(test,''));
 	s1 <- which(temp == '-');
 	sM <- which(temp == '*');
-	s1ed <- s1 - 18;#change 17 to the number of space&character before the first DNA character
-	sMed <- sM - 18;#change 17 to the number of space&character before the first DNA character
+	s1ed <- s1 - 18;#change 18 to the number of space&character before the first DNA character
+	sMed <- sM - 18;#change 18 to the number of space&character before the first DNA character
 	var.site.vec <- c(var.site.vec, s1ed, sMed);
 	
 }
